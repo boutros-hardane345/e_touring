@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>e_Touring | Plans</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{--green:#2f7d32;--gray:#f4f4f4;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Segoe UI"}
+body{background:var(--gray)}
+header{background:#fff;border-bottom:1px solid #ddd;position:fixed;width:100%;top:0}
+nav{display:flex;justify-content:space-between;align-items:center;padding:15px 30px}
+.logo{
+    color:var(--green);
+    font-weight:800;
+    font-size:22px;
+}
+.nav-links{display:flex;gap:20px}
+.nav-links a{text-decoration:none;color:var(--dark); font-weight : bold}
+.nav-links a:hover{color:var(--green)}
+.menu-btn{display:none;font-size:26px}
+main{margin-top:100px;padding:40px}
+.plan{background:#fff;padding:25px;border-radius:10px;margin-bottom:20px}
+@media(max-width:768px){
+.nav-links{position:absolute;top:70px;right:0;background:#fff;flex-direction:column;
+width:220px;display:none}
+.nav-links.active{display:flex}
+.menu-btn{display:block}
+}
+    /* ===== FOOTER ===== */
+.site-footer{
+    background:#fff;
+    border-top:1px solid #ddd;
+    text-align:center;
+    padding:18px 10px;
+    margin-top:60px;
+    font-size:14px;
+    color:#555;
+}
+
+.site-footer strong{
+    color:var(--green);
+}
+
+</style>
+</head>
+
+<body>
+<header>
+<nav>
+<div class="logo">e_Touring</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<div class="nav-links" id="navLinks">
+<a href="home_page.html">Home</a>
+<a href="about_us_page.html">About</a>
+<a href="events_page.html">Events</a>
+<a href="plans_pages.html">Plans</a>
+<a href="register_page.html">Volunteer</a>
+<a href="contact_us_page.html">Contact</a>
+</div>
+</nav>
+</header>
+
+<main>
+<h2>Our Plans</h2>
+
+<div class="plan">
+<h3>Weekend Hiking Plan</h3>
+<p>Difficulty: Medium</p>
+<p>Price: $40</p>
+<p>Location: North Lebanon</p>
+</div>
+
+<div class="plan">
+<h3>Camping Experience</h3>
+<p>Difficulty: Easy</p>
+<p>Price: $60</p>
+<p>Location: Bekaa</p>
+</div>
+</main>
+
+<script>
+    function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
+</script>
+     <footer class="site-footer">
+    <p>© 2026 <strong>e_Touring</strong>. All rights reserved.</p>
+</footer>
+</body>
+</html>

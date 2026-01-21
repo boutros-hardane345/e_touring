@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>e_Touring | Volunteer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+    --green:#2f7d32;
+    --gray:#f4f4f4;
+    --white:#fff;
+    --dark:#222;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", sans-serif;
+}
+
+body{
+    background:var(--gray);
+    color:var(--dark);
+}
+
+/* ===== HEADER ===== */
+header{
+    background:#fff;
+    border-bottom:1px solid #ddd;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+}
+
+.logo{
+    color:var(--green);
+    font-weight:800;
+    font-size:22px;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:var(--green);
+}
+
+.menu-btn{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* ===== MAIN ===== */
+main{
+    margin-top:110px;
+    padding:40px 20px;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.page-title h2{
+    font-size:28px;
+    color:var(--green);
+}
+
+.page-title p{
+    color:#555;
+    margin-top:8px;
+}
+
+/* ===== FORM CARD ===== */
+form{
+    background:var(--white);
+    padding:35px;
+    border-radius:14px;
+    max-width:520px;
+    margin:auto;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+label{
+    font-weight:600;
+    margin-top:12px;
+    display:block;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:var(--green);
+}
+
+textarea{
+    resize:none;
+}
+
+/* ===== BUTTON ===== */
+button{
+    width:100%;
+    margin-top:20px;
+    background:var(--green);
+    color:#fff;
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#256628;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+    .nav-links{
+        position:absolute;
+        top:70px;
+        right:0;
+        background:#fff;
+        flex-direction:column;
+        width:220px;
+        display:none;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+}
+    /* ===== FOOTER ===== */
+.site-footer{
+    background:#fff;
+    border-top:1px solid #ddd;
+    text-align:center;
+    padding:18px 10px;
+    margin-top:60px;
+    font-size:14px;
+    color:#555;
+}
+
+.site-footer strong{
+    color:var(--green);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">e_Touring</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+        <a href="home_page.html">Home</a>
+        <a href="about_us_page.html">About</a>
+        <a href="events_page.html">Events</a>
+        <a href="plans_pages.html">Plans</a>
+        <a href="register_page.html">Volunteer</a>
+        <a href="contact_us_page.html">Contact</a>
+    </div>
+</nav>
+</header>
+
+<main>
+
+<div class="page-title">
+    <h2>Volunteer Application</h2>
+    <p>Join e_Touring and be part of meaningful eco-adventures</p>
+</div>
+
+<form>
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter your full name" required>
+
+    <label>Email Address</label>
+    <input type="email" placeholder="Enter your email" required>
+
+    <label>Phone Number</label>
+    <input type="tel" placeholder="+961">
+
+    <label>Application Type</label>
+    <select required>
+        <option value="">Select an option</option>
+        <option>Volunteer</option>
+        <option>Internship</option>
+        <option>Career</option>
+    </select>
+
+    <label>Motivation</label>
+    <textarea rows="4" placeholder="Tell us why you want to join e_Touring"></textarea>
+
+    <button type="submit">Submit Application</button>
+</form>
+
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+    }
+</script>
+     <footer class="site-footer">
+    <p>© 2026 <strong>e_Touring</strong>. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>e_Touring | Contact Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --green:#2f7d32;
+    --gray:#f4f4f4;
+    --white:#fff;
+    --dark:#222;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", sans-serif;
+}
+
+body{
+    background:var(--gray);
+    color:var(--dark);
+}
+
+/* ===== HEADER ===== */
+header{
+    background:#fff;
+    border-bottom:1px solid #ddd;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+}
+
+.logo{
+    color:var(--green);
+    font-weight:800;
+    font-size:22px;
+}
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:var(--green);
+}
+
+.menu-btn{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* ===== MAIN ===== */
+main{
+    margin-top:110px;
+    padding:40px 20px;
+}
+
+.contact-container{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+/* ===== CONTACT INFO ===== */
+.contact-info{
+    background:var(--white);
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.contact-info h2{
+    margin-bottom:15px;
+    color:var(--green);
+}
+
+.contact-info p{
+    margin:12px 0;
+    font-size:16px;
+}
+
+.contact-info i{
+    color:var(--green);
+    margin-right:10px;
+}
+
+/* ===== SOCIAL ICONS ===== */
+.social-icons{
+    margin-top:25px;
+}
+
+.social-icons a{
+    font-size:26px;
+    margin-right:15px;
+    transition:transform 0.2s ease;
+    text-decoration:none;
+}
+
+.social-icons a:hover{
+    transform:scale(1.2);
+}
+
+.fa-whatsapp{color:#25D366}
+.fa-facebook-f{color:#1877F2}
+.fa-instagram{color:#E4405F}
+
+/* ===== FORM ===== */
+form{
+    background:var(--white);
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+form h3{
+    margin-bottom:15px;
+    color:var(--green);
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+}
+
+textarea{
+    resize:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:var(--green);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#256628;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        right:0;
+        background:#fff;
+        flex-direction:column;
+        width:220px;
+        display:none;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+}
+    /* ===== FOOTER ===== */
+.site-footer{
+    background:#fff;
+    border-top:1px solid #ddd;
+    text-align:center;
+    padding:18px 10px;
+    margin-top:60px;
+    font-size:14px;
+    color:#555;
+}
+
+.site-footer strong{
+    color:var(--green);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">e_Touring</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+        <a href="home_page.html">Home</a>
+        <a href="about_us_page.html">About</a>
+        <a href="events_page.html">Events</a>
+        <a href="plans_pages.html">Plans</a>
+        <a href="register_page.html">Volunteer</a>
+        <a href="contact_us_page.html">Contact</a>
+    </div>
+</nav>
+</header>
+
+<main>
+<div class="contact-container">
+
+    <!-- CONTACT INFO -->
+    <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p><i class="fa-solid fa-envelope"></i> info@etouring.com</p>
+        <p><i class="fa-solid fa-phone"></i> +961 70 000 000</p>
+        <p><i class="fa-solid fa-location-dot"></i> Lebanon</p>
+
+        <div class="social-icons">
+            <a href="https://wa.me/96170000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/etouring" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/etouring" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <form>
+        <h3>Send Us a Message</h3>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+    </form>
+
+</div>
+</main>
+
+<script>
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+    }
+</script>
+     <footer class="site-footer">
+    <p>© 2026 <strong>e_Touring</strong>. All rights reserved.</p>
+</footer>
+</body>
+</html>
