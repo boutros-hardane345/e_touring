@@ -1,0 +1,499 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e_Touring | Volunteer</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .volunteer-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .benefit-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            padding: 2rem;
+            text-align: center;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+            background: var(--primary-bg);
+        }
+        
+        .file-upload i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .volunteer-opportunities {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+        }
+        
+        .opportunity-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .opportunity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .opportunity-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--primary-bg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-answer.show {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="e-Touring Logo">
+                <span>e_Touring</span>
+            </div>
+            <div class="menu-btn">☰</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="events_page.html">Events</a>
+                <a href="plans_pages.html">Plans</a>
+                <a href="register_page.html" class="active">Volunteer</a>
+                <a href="contact_us_page.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="height: 40vh; min-height: 300px;" data-aos="fade-in">
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                 alt="Volunteers" 
+                 loading="lazy">
+            <div class="hero-content">
+                <h1>Volunteer With Us</h1>
+                <p>Join our mission to protect Lebanon's natural heritage</p>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="section">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Why Volunteer?</h2>
+                <p>Make a difference while gaining valuable experience</p>
+            </div>
+            <div class="volunteer-benefits" data-aos="fade-up">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Make a Difference</h3>
+                    <p>Contribute directly to environmental conservation and community development in Lebanon</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Meet New People</h3>
+                    <p>Connect with like-minded individuals who share your passion for nature and sustainability</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Learn & Grow</h3>
+                    <p>Gain valuable skills in eco-tourism, environmental education, and conservation</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Get Certified</h3>
+                    <p>Receive volunteer certificates and professional references for your contribution</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Opportunities -->
+        <section class="section">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Current Opportunities</h2>
+                <p>Find the perfect role for your skills and interests</p>
+            </div>
+            <div class="volunteer-opportunities" data-aos="fade-up">
+                <div class="opportunity-item">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4>Trail Maintenance</h4>
+                        <p class="text-primary"><i class="fas fa-clock"></i> Weekly • Weekends</p>
+                        <p>Help maintain and restore hiking trails in nature reserves. Perfect for outdoor enthusiasts who enjoy physical work in beautiful settings.</p>
+                        <div class="mt-2">
+                            <span class="badge" style="background: var(--primary-bg); color: var(--primary); padding: 0.25rem 1rem; border-radius: 20px;">3 spots left</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="opportunity-item">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4>Event Assistant</h4>
+                        <p class="text-primary"><i class="fas fa-clock"></i> Flexible • Weekdays/Weekends</p>
+                        <p>Assist in organizing and running eco-events and workshops. Great for those interested in event management and community engagement.</p>
+                        <div class="mt-2">
+                            <span class="badge" style="background: var(--primary-bg); color: var(--primary); padding: 0.25rem 1rem; border-radius: 20px;">Multiple positions</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="opportunity-item">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4>Content Creator</h4>
+                        <p class="text-primary"><i class="fas fa-clock"></i> Remote • Flexible</p>
+                        <p>Create social media content, take photos, and document our activities. Perfect for creative individuals with photography or writing skills.</p>
+                        <div class="mt-2">
+                            <span class="badge" style="background: var(--primary-bg); color: var(--primary); padding: 0.25rem 1rem; border-radius: 20px;">2 spots left</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="opportunity-item">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4>Environmental Educator</h4>
+                        <p class="text-primary"><i class="fas fa-clock"></i> Weekends</p>
+                        <p>Lead educational activities for school groups and visitors. Share your knowledge about Lebanon's unique ecosystems.</p>
+                        <div class="mt-2">
+                            <span class="badge" style="background: var(--primary-bg); color: var(--primary); padding: 0.25rem 1rem; border-radius: 20px;">1 spot left</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Form -->
+        <section class="section">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Volunteer Application</h2>
+                <p>Fill out the form below to join our team</p>
+            </div>
+            
+            <div class="form-container" data-aos="fade-up">
+                <form id="volunteerForm" data-validate>
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Full Name *</label>
+                        <input type="text" class="form-control" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="+961 00 000 000">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-briefcase"></i> Application Type *</label>
+                        <select class="form-control" name="applicationType" required>
+                            <option value="">Select an option</option>
+                            <option value="volunteer">Volunteer</option>
+                            <option value="internship">Internship</option>
+                            <option value="career">Career</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar"></i> Availability</label>
+                        <select class="form-control" name="availability">
+                            <option value="">Select availability</option>
+                            <option value="weekends">Weekends only</option>
+                            <option value="weekdays">Weekdays only</option>
+                            <option value="flexible">Flexible</option>
+                            <option value="fulltime">Full time</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-heart"></i> Areas of Interest</label>
+                        <select class="form-control" name="interest" multiple size="4">
+                            <option value="trails">Trail Maintenance</option>
+                            <option value="events">Event Organization</option>
+                            <option value="education">Environmental Education</option>
+                            <option value="social">Social Media</option>
+                            <option value="photography">Photography</option>
+                            <option value="admin">Administration</option>
+                        </select>
+                        <small class="text-gray">Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-file"></i> Resume/CV (PDF or Word)</label>
+                        <div class="file-upload" onclick="document.getElementById('resume').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload or drag and drop</p>
+                            <small>Max file size: 5MB</small>
+                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-pen"></i> Motivation *</label>
+                        <textarea class="form-control" name="motivation" rows="5" placeholder="Tell us why you want to join e_Touring and how you can contribute" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-question-circle"></i> How did you hear about us?</label>
+                        <select class="form-control" name="source">
+                            <option value="">Select source</option>
+                            <option value="social">Social Media</option>
+                            <option value="friend">Friend/Family</option>
+                            <option value="website">Our Website</option>
+                            <option value="event">Previous Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            I agree to the <a href="#">terms and conditions</a> *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Submit Application
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p>Everything you need to know about volunteering</p>
+            </div>
+            
+            <div class="faq-container" data-aos="fade-up">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need previous experience?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No experience necessary! We provide comprehensive training for all volunteers. We believe enthusiasm and willingness to learn are more important than prior experience. Our team will guide you through everything you need to know.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's the minimum time commitment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer flexible volunteering opportunities. You can volunteer as little as 4 hours per month or join us full-time. We'll work with your schedule to find a commitment level that suits you.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there an age requirement?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Volunteers must be 18 or older for most positions. Minors (16-17) can participate with parental consent and supervision. We also offer family-friendly events where younger volunteers can participate with their parents.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide equipment?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide necessary equipment for most activities including gloves, trash bags, and tools. For hiking events, you'll need your own hiking shoes and weather-appropriate clothing. We'll send you a detailed list of what to bring before each event.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I volunteer remotely?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We have remote opportunities in content creation, social media management, graphic design, and research. Let us know your skills and interests, and we'll find a role that fits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>e_Touring</h4>
+                <p><i class="fas fa-envelope"></i> info@etouring.com</p>
+                <p><i class="fas fa-phone"></i> +961 70 000 000</p>
+                <p><i class="fas fa-location-dot"></i> Beirut, Lebanon</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="events_page.html"><i class="fas fa-chevron-right"></i> Events</a></li>
+                    <li><a href="plans_pages.html"><i class="fas fa-chevron-right"></i> Plans</a></li>
+                    <li><a href="register_page.html"><i class="fas fa-chevron-right"></i> Volunteer</a></li>
+                    <li><a href="contact_us_page.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 <strong>e_Touring</strong>. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--primary);"></i> for Lebanon</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const answer = this.nextElementSibling;
+                answer.classList.toggle('show');
+                
+                // Close other FAQs
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== this && q.classList.contains('active')) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
