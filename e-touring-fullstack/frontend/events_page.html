@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e_Touring | Events</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .event-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .event-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            z-index: 1;
+        }
+        
+        .event-details {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .event-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+        
+        .event-detail-item i {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="e-Touring Logo">
+                <span>e_Touring</span>
+            </div>
+            <div class="menu-btn">☰</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="events_page.html" class="active">Events</a>
+                <a href="plans_pages.html">Plans</a>
+                <a href="register_page.html">Volunteer</a>
+                <a href="contact_us_page.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="height: 40vh; min-height: 300px;" data-aos="fade-in">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" 
+                 alt="Events" 
+                 loading="lazy">
+            <div class="hero-content">
+                <h1>Our Events</h1>
+                <p>Discover upcoming eco-adventures and activities</p>
+            </div>
+        </section>
+
+        <!-- Event Filters -->
+        <section class="section" data-aos="fade-up">
+            <div class="event-filters">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="hiking">Hiking</button>
+                <button class="filter-btn" data-filter="cleanup">Cleanups</button>
+                <button class="filter-btn" data-filter="camping">Camping</button>
+                <button class="filter-btn" data-filter="workshop">Workshops</button>
+            </div>
+        </section>
+
+        <!-- Events Grid -->
+        <section class="section">
+            <div class="events-grid grid">
+                <!-- Event 1 -->
+                <div class="card event-card" data-category="hiking" data-aos="fade-up" data-aos-delay="100">
+                    <span class="event-badge">Upcoming</span>
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Hiking Event" 
+                         class="card-img"
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">Tannourine Cedar Forest Hike</h3>
+                        <div class="event-details">
+                            <span class="event-detail-item"><i class="fas fa-calendar"></i> Mar 20, 2026</span>
+                            <span class="event-detail-item"><i class="fas fa-clock"></i> 8:00 AM</span>
+                            <span class="event-detail-item"><i class="fas fa-map-marker-alt"></i> Tannourine</span>
+                        </div>
+                        <p>Explore one of Lebanon's most beautiful cedar forests with our expert guides. Learn about the unique ecosystem and enjoy breathtaking views.</p>
+                        <div class="event-details mt-2">
+                            <span class="event-detail-item"><i class="fas fa-users"></i> 25 spots left</span>
+                            <span class="event-detail-item"><i class="fas fa-tag"></i> $20</span>
+                            <span class="event-detail-item"><i class="fas fa-signal"></i> Medium</span>
+                        </div>
+                        <button class="btn mt-3" onclick="registerForEvent('Tannourine Cedar Forest Hike')">Register Now</button>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="card event-card" data-category="cleanup" data-aos="fade-up" data-aos-delay="200">
+                    <span class="event-badge" style="background: #ff6b6b;">Free</span>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Beach Cleanup" 
+                         class="card-img"
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">Batroun Beach Cleanup</h3>
+                        <div class="event-details">
+                            <span class="event-detail-item"><i class="fas fa-calendar"></i> May 25, 2026</span>
+                            <span class="event-detail-item"><i class="fas fa-clock"></i> 9:00 AM</span>
+                            <span class="event-detail-item"><i class="fas fa-map-marker-alt"></i> Batroun</span>
+                        </div>
+                        <p>Join our community beach cleanup event. All equipment provided. Let's keep our coastline clean together!</p>
+                        <div class="event-details mt-2">
+                            <span class="event-detail-item"><i class="fas fa-users"></i> 60 volunteers</span>
+                            <span class="event-detail-item"><i class="fas fa-tag"></i> Free</span>
+                            <span class="event-detail-item"><i class="fas fa-signal"></i> Easy</span>
+                        </div>
+                        <button class="btn mt-3" onclick="registerForEvent('Batroun Beach Cleanup')">Join as Volunteer</button>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="card event-card" data-category="camping" data-aos="fade-up" data-aos-delay="300">
+                    <span class="event-badge">Camping</span>
+                    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Camping" 
+                         class="card-img"
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">Bekaa Valley Camping</h3>
+                        <div class="event-details">
+                            <span class="event-detail-item"><i class="fas fa-calendar"></i> Jun 15-16, 2026</span>
+                            <span class="event-detail-item"><i class="fas fa-clock"></i> 2 Days</span>
+                            <span class="event-detail-item"><i class="fas fa-map-marker-alt"></i> Bekaa</span>
+                        </div>
+                        <p>Experience an overnight camping adventure in the beautiful Bekaa valley. Includes meals, equipment, and guided activities.</p>
+                        <div class="event-details mt-2">
+                            <span class="event-detail-item"><i class="fas fa-users"></i> 15 spots</span>
+                            <span class="event-detail-item"><i class="fas fa-tag"></i> $60</span>
+                            <span class="event-detail-item"><i class="fas fa-signal"></i> Easy</span>
+                        </div>
+                        <button class="btn mt-3" onclick="registerForEvent('Bekaa Valley Camping')">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="card event-card" data-category="workshop" data-aos="fade-up" data-aos-delay="400">
+                    <span class="event-badge">Workshop</span>
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Workshop" 
+                         class="card-img"
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">Environmental Education Workshop</h3>
+                        <div class="event-details">
+                            <span class="event-detail-item"><i class="fas fa-calendar"></i> Jul 10, 2026</span>
+                            <span class="event-detail-item"><i class="fas fa-clock"></i> 10:00 AM</span>
+                            <span class="event-detail-item"><i class="fas fa-map-marker-alt"></i> Beirut</span>
+                        </div>
+                        <p>Learn about Lebanon's unique ecosystems and how you can help protect them. Interactive workshop for all ages.</p>
+                        <div class="event-details mt-2">
+                            <span class="event-detail-item"><i class="fas fa-users"></i> 30 spots</span>
+                            <span class="event-detail-item"><i class="fas fa-tag"></i> $10</span>
+                            <span class="event-detail-item"><i class="fas fa-signal"></i> Beginner</span>
+                        </div>
+                        <button class="btn mt-3" onclick="registerForEvent('Environmental Education Workshop')">Register</button>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="card event-card" data-category="hiking" data-aos="fade-up" data-aos-delay="500">
+                    <span class="event-badge">New</span>
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Mountain Hike" 
+                         class="card-img"
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">Qadisha Valley Sunrise Hike</h3>
+                        <div class="event-details">
+                            <span class="event-detail-item"><i class="fas fa-calendar"></i> Aug 5, 2026</span>
+                            <span class="event-detail-item"><i class="fas fa-clock"></i> 4:30 AM</span>
+                            <span class="event-detail-item"><i class="fas fa-map-marker-alt"></i> Qadisha</span>
+                        </div>
+                        <p>Watch the sunrise from the stunning Qadisha Valley. A magical experience for early risers and nature lovers.</p>
+                        <div class="event-details mt-2">
+                            <span class="event-detail-item"><i class="fas fa-users"></i> 15 spots</span>
+                            <span class="event-detail-item"><i class="fas fa-tag"></i> $25</span>
+                            <span class="event-detail-item"><i class="fas fa-signal"></i> Medium</span>
+                        </div>
+                        <button class="btn mt-3" onclick="registerForEvent('Qadisha Valley Sunrise Hike')">Register Now</button>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="card event-card" data-category="cleanup" data-aos="fade-up" data-aos-delay="600">
+                    <span class="event-badge" style="background: #ff6b6b;">Free</span>
+                    <img src="https://images.unsplash.com/photo-1618477462146-050dbe6b3e2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Forest Cleanup" 
+                         class="card-img"
+                         loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">Arz Forest Conservation Day</h3>
+                        <div class="event-details">
+                            <span class="event-detail-item"><i class="fas fa-calendar"></i> Sep 12, 2026</span>
+                            <span class="event-detail-item"><i class="fas fa-clock"></i> 8:00 AM</span>
+                            <span class="event-detail-item"><i class="fas fa-map-marker-alt"></i> Arz</span>
+                        </div>
+                        <p>Help preserve the iconic Cedar forests. Activities include trail maintenance and litter collection.</p>
+                        <div class="event-details mt-2">
+                            <span class="event-detail-item"><i class="fas fa-users"></i> 40 volunteers</span>
+                            <span class="event-detail-item"><i class="fas fa-tag"></i> Free</span>
+                            <span class="event-detail-item"><i class="fas fa-signal"></i> Easy</span>
+                        </div>
+                        <button class="btn mt-3" onclick="registerForEvent('Arz Forest Conservation Day')">Volunteer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="newsletter" data-aos="fade-up">
+            <div class="text-center">
+                <h3>Want to organize an event?</h3>
+                <p>We're always looking for partners and volunteers to help organize eco-events</p>
+                <a href="contact_us_page.html" class="btn btn-outline">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>e_Touring</h4>
+                <p><i class="fas fa-envelope"></i> info@etouring.com</p>
+                <p><i class="fas fa-phone"></i> +961 70 000 000</p>
+                <p><i class="fas fa-location-dot"></i> Beirut, Lebanon</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="events_page.html"><i class="fas fa-chevron-right"></i> Events</a></li>
+                    <li><a href="plans_pages.html"><i class="fas fa-chevron-right"></i> Plans</a></li>
+                    <li><a href="register_page.html"><i class="fas fa-chevron-right"></i> Volunteer</a></li>
+                    <li><a href="contact_us_page.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 <strong>e_Touring</strong>. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--primary);"></i> for Lebanon</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script>
+        // Event filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const events = document.querySelectorAll('.event-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    events.forEach(event => {
+                        if (filter === 'all' || event.dataset.category === filter) {
+                            event.style.display = 'block';
+                        } else {
+                            event.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

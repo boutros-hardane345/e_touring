@@ -1,0 +1,53 @@
+# Dependency directories
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Database
+*.db
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage/
+.nyc_output/
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# MacOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backend uploads
+backend/uploads/
+backend/public/uploads/
+
+# Frontend build
+frontend/dist/
+frontend/build/
+
+# Misc
+*.bak

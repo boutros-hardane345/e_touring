@@ -556,6 +556,20 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+<<<<<<< HEAD
+=======
+.footer-section p a {
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section p a:hover {
+    color: var(--primary-light);
+    text-decoration: underline;
+}
+
+>>>>>>> 8f8a937 (Update message)
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
     from {
@@ -823,4 +837,9 @@ footer {
 
 .file-upload input {
     display: none;
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 8f8a937 (Update message)
