@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | e_Touring</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 2rem;
+        }
+
+        .login-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .login-header .logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .login-header h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .alert-error {
+            background: #fee;
+            color: #c33;
+            border: 1px solid #fcc;
+        }
+
+        .alert-success {
+            background: #efe;
+            color: #3c3;
+            border: 1px solid #cfc;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-dark);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-bg);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-login:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(47, 125, 50, 0.4);
+        }
+
+        .btn-login:disabled {
+            background: var(--gray-dark);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .back-link a:hover {
+            color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <img src="images/logo.png" alt="e_Touring Logo">
+                    <h2>e_Touring</h2>
+                </div>
+                <h2>Admin Login</h2>
+                <p>Sign in to manage events and plans</p>
+            </div>
+
+            <div id="alert" class="alert"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" name="username" required autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <span id="btnText">Sign In</span>
+                    <div class="spinner" id="spinner"></div>
+                </button>
+            </form>
+
+            <div class="back-link">
+                <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Website</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const btnText = document.getElementById('btnText');
+        const spinner = document.getElementById('spinner');
+        const alert = document.getElementById('alert');
+
+        // Check if already logged in
+        const token = localStorage.getItem('adminToken');
+        if (token) {
+            // Verify token is still valid
+            verifyToken(token);
+        }
+
+        async function verifyToken(token) {
+            try {
+                const response = await fetch(`${API_URL}/auth/admin/verify`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    window.location.href = 'admin_dashboard.html';
+                } else {
+                    localStorage.removeItem('adminToken');
+                }
+            } catch (error) {
+                console.error('Token verification error:', error);
+                localStorage.removeItem('adminToken');
+            }
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Show loading state
+            loginBtn.disabled = true;
+            btnText.textContent = 'Signing in...';
+            spinner.style.display = 'block';
+            hideAlert();
+
+            try {
+                const response = await fetch(`${API_URL}/auth/admin/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Store token
+                    localStorage.setItem('adminToken', data.token);
+                    localStorage.setItem('adminUser', JSON.stringify(data.admin));
+
+                    showAlert('Login successful! Redirecting...', 'success');
+
+                    // Redirect to dashboard
+                    setTimeout(() => {
+                        window.location.href = 'admin_dashboard.html';
+                    }, 1000);
+                } else {
+                    showAlert(data.message || 'Login failed', 'error');
+                    resetButton();
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('Network error. Make sure the backend server is running.', 'error');
+                resetButton();
+            }
+        });
+
+        function resetButton() {
+            loginBtn.disabled = false;
+            btnText.textContent = 'Sign In';
+            spinner.style.display = 'none';
+        }
+
+        function showAlert(message, type) {
+            alert.textContent = message;
+            alert.className = `alert alert-${type}`;
+            alert.style.display = 'block';
+        }
+
+        function hideAlert() {
+            alert.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

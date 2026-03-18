@@ -58,16 +58,58 @@ document.addEventListener('DOMContentLoaded', function() {
     initFileUpload();
 });
 
-// Load Events
-function loadEvents() {
+// API Configuration
+const API_URL = 'http://localhost:5000/api';
+const WHATSAPP_ADMIN_NUMBER = '96170263067'; // WhatsApp number for bookings
+
+// Load Events from API
+async function loadEvents() {
     const eventsGrid = document.querySelector('.events-grid');
     if (!eventsGrid) return;
 
+    try {
+        const response = await fetch(`${API_URL}/events?status=upcoming`);
+        const data = await response.json();
+
+        if (data.success && data.events.length > 0) {
+            // Show only first 3 events on homepage
+            const events = data.events.slice(0, 3);
+
+            eventsGrid.innerHTML = events.map((event, index) => `
+                <div class="card" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <img src="${event.image}" alt="${event.title}" class="card-img" loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">${event.title}</h3>
+                        <p><i class="fas fa-calendar" style="color: var(--primary);"></i> ${event.date}</p>
+                        <p><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> ${event.location}</p>
+                        <p><i class="fas fa-users" style="color: var(--primary);"></i> ${event.participants}</p>
+                        <p><i class="fas fa-tag" style="color: var(--primary);"></i> ${event.price}</p>
+                        <p class="mt-2">${event.description}</p>
+                        <button class="btn mt-3" onclick='bookEventWhatsApp(${JSON.stringify(event).replace(/'/g, "&apos;")})'>
+                            <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        } else {
+            // Fallback to default events if API fails or no events
+            loadDefaultEvents(eventsGrid);
+        }
+    } catch (error) {
+        console.error('Error loading events from API:', error);
+        // Fallback to default events
+        loadDefaultEvents(eventsGrid);
+    }
+}
+
+// Fallback events if API is not available
+function loadDefaultEvents(eventsGrid) {
     const events = [
         {
             title: 'Hiking – Tannourine',
             date: 'March 20, 2026',
             price: '$20',
+            location: 'Tannourine',
             participants: '25 Participants',
             image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             description: 'Explore the beautiful cedar forests of Tannourine'
@@ -76,6 +118,7 @@ function loadEvents() {
             title: 'Beach Cleanup – Batroun',
             date: 'May 25, 2026',
             price: 'Free',
+            location: 'Batroun',
             participants: '60 Volunteers',
             image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             description: 'Help us keep our beaches clean and beautiful'
@@ -84,6 +127,7 @@ function loadEvents() {
             title: 'Camping – Bekaa',
             date: 'June 15, 2026',
             price: '$60',
+            location: 'Bekaa Valley',
             participants: '15 Campers',
             image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
             description: 'Experience overnight camping in the Bekaa valley'
@@ -96,10 +140,13 @@ function loadEvents() {
             <div class="card-content">
                 <h3 class="card-title">${event.title}</h3>
                 <p><i class="fas fa-calendar" style="color: var(--primary);"></i> ${event.date}</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> ${event.location}</p>
                 <p><i class="fas fa-users" style="color: var(--primary);"></i> ${event.participants}</p>
                 <p><i class="fas fa-tag" style="color: var(--primary);"></i> ${event.price}</p>
                 <p class="mt-2">${event.description}</p>
-                <button class="btn mt-3" onclick="registerForEvent('${event.title}')">Register Now</button>
+                <button class="btn mt-3" onclick='bookEventWhatsApp(${JSON.stringify(event).replace(/'/g, "&apos;")})'>
+                    <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                </button>
             </div>
         </div>
     `).join('');
@@ -574,3 +621,187 @@ class FormHandler {
 document.addEventListener('DOMContentLoaded', () => {
     window.formHandler = new FormHandler();
 });
+
+// ========== WHATSAPP BOOKING FUNCTIONS ==========
+
+// Book Event via WhatsApp
+function bookEventWhatsApp(event) {
+    // Create WhatsApp message with event details
+    const message = `Hello! I would like to book the following event:\n\n` +
+        `📅 *Event:* ${event.title}\n` +
+        `📍 *Location:* ${event.location}\n` +
+        `🗓️ *Date:* ${event.date}\n` +
+        `💰 *Price:* ${event.price}\n` +
+        `👥 *Participants:* ${event.participants}\n\n` +
+        `Please provide me with more details about this event.`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${WHATSAPP_ADMIN_NUMBER}?text=${encodedMessage}`;
+
+    // Open WhatsApp in new window
+    window.open(whatsappURL, '_blank');
+}
+
+// Book Plan via WhatsApp
+function bookPlanWhatsApp(plan) {
+    // Create WhatsApp message with plan details
+    const message = `Hello! I would like to subscribe to the following plan:\n\n` +
+        `📦 *Plan:* ${plan.name}\n` +
+        `💰 *Price:* ${plan.currency}${plan.price}/${plan.period}\n` +
+        `📋 *Category:* ${plan.category}\n` +
+        `📝 *Description:* ${plan.description}\n\n` +
+        `Please provide me with more details about this subscription plan.`;
+
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/${WHATSAPP_ADMIN_NUMBER}?text=${encodedMessage}`;
+
+    // Open WhatsApp in new window
+    window.open(whatsappURL, '_blank');
+}
+
+// Alternative: Show booking form modal before WhatsApp
+function bookEventWithForm(event) {
+    showBookingFormModal('event', event);
+}
+
+function bookPlanWithForm(plan) {
+    showBookingFormModal('plan', plan);
+}
+
+function showBookingFormModal(type, item) {
+    const modal = document.createElement('div');
+    modal.className = 'booking-modal';
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        padding: 1rem;
+    `;
+
+    const itemName = type === 'event' ? item.title : item.name;
+    const itemDetails = type === 'event'
+        ? `${item.date} | ${item.location} | ${item.price}`
+        : `${item.currency}${item.price}/${item.period}`;
+
+    modal.innerHTML = `
+        <div style="
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="margin: 0; color: var(--primary);">
+                    <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                </h3>
+                <button onclick="this.closest('.booking-modal').remove()" style="
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: var(--gray-dark);
+                ">&times;</button>
+            </div>
+
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <strong>${itemName}</strong><br>
+                <small style="color: var(--gray-dark);">${itemDetails}</small>
+            </div>
+
+            <form id="whatsappBookingForm">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" class="form-control" id="bookingName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" class="form-control" id="bookingPhone" required placeholder="+961 70 123 456">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="bookingEmail" placeholder="optional">
+                </div>
+
+                <div class="form-group">
+                    <label>Number of People</label>
+                    <input type="number" class="form-control" id="bookingPeople" value="1" min="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea class="form-control" id="bookingNotes" rows="3" placeholder="Any special requests or questions..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Send Booking via WhatsApp
+                </button>
+            </form>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Handle form submission
+    document.getElementById('whatsappBookingForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('bookingName').value;
+        const phone = document.getElementById('bookingPhone').value;
+        const email = document.getElementById('bookingEmail').value;
+        const people = document.getElementById('bookingPeople').value;
+        const notes = document.getElementById('bookingNotes').value;
+
+        // Create detailed WhatsApp message
+        let message = `🎫 *New Booking Request*\n\n`;
+        message += `📌 *${type === 'event' ? 'Event' : 'Plan'}:* ${itemName}\n`;
+
+        if (type === 'event') {
+            message += `📅 *Date:* ${item.date}\n`;
+            message += `📍 *Location:* ${item.location}\n`;
+            message += `💰 *Price:* ${item.price}\n`;
+        } else {
+            message += `💰 *Price:* ${item.currency}${item.price}/${item.period}\n`;
+            message += `📋 *Category:* ${item.category}\n`;
+        }
+
+        message += `\n👤 *Customer Details:*\n`;
+        message += `• Name: ${name}\n`;
+        message += `• Phone: ${phone}\n`;
+        if (email) message += `• Email: ${email}\n`;
+        message += `• Number of People: ${people}\n`;
+        if (notes) message += `\n📝 *Notes:* ${notes}`;
+
+        // Encode and send via WhatsApp
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/${WHATSAPP_ADMIN_NUMBER}?text=${encodedMessage}`;
+
+        window.open(whatsappURL, '_blank');
+        modal.remove();
+
+        // Show confirmation
+        showNotification('Redirecting to WhatsApp...', 'success');
+    });
+
+    // Close on outside click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+    });
+}

@@ -52,31 +52,7 @@
             font-size: 2rem;
         }
         
-        .file-upload {
-            border: 2px dashed #e0e0e0;
-            padding: 2rem;
-            text-align: center;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .file-upload:hover {
-            border-color: var(--primary);
-            background: var(--primary-bg);
-        }
-        
-        .file-upload i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .file-upload input {
-            display: none;
-        }
-        
-        .volunteer-opportunities {
+.volunteer-opportunities {
             background: var(--white);
             padding: 2rem;
             border-radius: var(--border-radius);
@@ -281,96 +257,20 @@
                 <h2>Volunteer Application</h2>
                 <p>Fill out the form below to join our team</p>
             </div>
-            
-            <div class="form-container" data-aos="fade-up">
-                <form id="volunteerForm" data-validate>
-                    <div class="form-group">
-                        <label><i class="fas fa-user"></i> Full Name *</label>
-                        <input type="text" class="form-control" name="fullName" placeholder="Enter your full name" required>
-                    </div>
 
-                    <div class="form-group">
-                        <label><i class="fas fa-envelope"></i> Email Address *</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-phone"></i> Phone Number</label>
-                        <input type="tel" class="form-control" name="phone" placeholder="+961 00 000 000">
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-briefcase"></i> Application Type *</label>
-                        <select class="form-control" name="applicationType" required>
-                            <option value="">Select an option</option>
-                            <option value="volunteer">Volunteer</option>
-                            <option value="internship">Internship</option>
-                            <option value="career">Career</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-calendar"></i> Availability</label>
-                        <select class="form-control" name="availability">
-                            <option value="">Select availability</option>
-                            <option value="weekends">Weekends only</option>
-                            <option value="weekdays">Weekdays only</option>
-                            <option value="flexible">Flexible</option>
-                            <option value="fulltime">Full time</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-heart"></i> Areas of Interest</label>
-                        <select class="form-control" name="interest" multiple size="4">
-                            <option value="trails">Trail Maintenance</option>
-                            <option value="events">Event Organization</option>
-                            <option value="education">Environmental Education</option>
-                            <option value="social">Social Media</option>
-                            <option value="photography">Photography</option>
-                            <option value="admin">Administration</option>
-                        </select>
-                        <small class="text-gray">Hold Ctrl/Cmd to select multiple</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-file"></i> Resume/CV (PDF or Word)</label>
-                        <div class="file-upload" onclick="document.getElementById('resume').click()">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <p>Click to upload or drag and drop</p>
-                            <small>Max file size: 5MB</small>
-                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-pen"></i> Motivation *</label>
-                        <textarea class="form-control" name="motivation" rows="5" placeholder="Tell us why you want to join e_Touring and how you can contribute" required></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label><i class="fas fa-question-circle"></i> How did you hear about us?</label>
-                        <select class="form-control" name="source">
-                            <option value="">Select source</option>
-                            <option value="social">Social Media</option>
-                            <option value="friend">Friend/Family</option>
-                            <option value="website">Our Website</option>
-                            <option value="event">Previous Event</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="terms" required>
-                            I agree to the <a href="#">terms and conditions</a> *
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn" style="width: 100%;">
-                        <i class="fas fa-paper-plane"></i> Submit Application
-                    </button>
-                </form>
+            <div data-aos="fade-up" style="display: flex; justify-content: center;">
+                <div style="width: 100%; max-width: 700px; background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden;">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSeXOKCfwLLazktLl-PlNgkwJ5pQZ2UOYOWu0ieiWQaichp5wQ/viewform?embedded=true"
+                        width="100%"
+                        height="1983"
+                        frameborder="0"
+                        marginheight="0"
+                        marginwidth="0"
+                        style="display: block;">
+                        Loading…
+                    </iframe>
+                </div>
             </div>
         </section>
 
@@ -440,12 +340,12 @@
             <div class="footer-section">
                 <h4>e_Touring</h4>
                 <p><i class="fas fa-envelope"></i> info@etouring.com</p>
-                <p><i class="fas fa-phone"></i> +961 70 000 000</p>
+                <p><i class="fas fa-phone"></i> +961 70 263 067</p>
                 <p><i class="fas fa-location-dot"></i> Beirut, Lebanon</p>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/96170263067" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
@@ -484,8 +384,6 @@
                 this.classList.toggle('active');
                 const answer = this.nextElementSibling;
                 answer.classList.toggle('show');
-                
-                // Close other FAQs
                 document.querySelectorAll('.faq-question').forEach(q => {
                     if (q !== this && q.classList.contains('active')) {
                         q.classList.remove('active');

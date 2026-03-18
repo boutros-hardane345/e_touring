@@ -217,8 +217,8 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>Call Us</h3>
-                    <p>+961 70 000 000</p>
-                    <p>+961 1 000 000</p>
+                    <p>+961 70 263 067</p>
+                    <p>+961 70 263 067</p>
                     <p class="text-gray" style="margin-top: 1rem;">Mon-Fri, 9am-6pm</p>
                 </div>
                 
@@ -288,6 +288,27 @@
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
+                    <script>
+                        document.getElementById('contactForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            const name    = this.name.value.trim();
+                            const email   = this.email.value.trim();
+                            const phone   = this.phone.value.trim();
+                            const subject = this.subject.value;
+                            const message = this.message.value.trim();
+
+                            const subjectLine = encodeURIComponent('Contact Form: ' + subject);
+                            const body = encodeURIComponent(
+                                'Name: ' + name + '\n' +
+                                'Email: ' + email + '\n' +
+                                (phone ? 'Phone: ' + phone + '\n' : '') +
+                                'Subject: ' + subject + '\n\n' +
+                                'Message:\n' + message
+                            );
+
+                            window.location.href = 'mailto:etouringleb@gmail.com?subject=' + subjectLine + '&body=' + body;
+                        });
+                    </script>
                 </div>
 
                 <!-- Map & Office Hours -->
@@ -324,7 +345,7 @@
                         <div class="social-contact">
                             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/96170263067" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
